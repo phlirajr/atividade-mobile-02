@@ -34,13 +34,14 @@ function Login({navigation}) {
             <Button
               containerStyle={{width: 200}}
               title="Login"
+              buttonStyle={{borderRadius: 10}}
               onPress={()=>navigation.navigate("Contatos")}                        
             />
             <Button
               containerStyle={{width: 200 }}
               title="Cadastre-se"
-              type='outline'
-              onPress={()=>navigation.navigate("Contatos")}          
+              buttonStyle={{backgroundColor: "orange", borderRadius: 10}}              
+              onPress={()=>navigation.navigate("CadastroUser")}          
             />
           </View>
       </View>
