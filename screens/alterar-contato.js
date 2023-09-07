@@ -34,11 +34,16 @@ function EditarContato({navigation}) {
                     onChangeText={value => this.setState({ comment: value })}
                     style={{padding: 2}}
                 />
-                <View style={{alignItems:'center', paddingTop:30}}>
+                <View style={{alignItems:'center', paddingTop:30, gap: 20}}>
                     <Button
                         containerStyle={{width: 200}}
-                        title="Salvar"
+                        title="Alterar"
                         buttonStyle={{borderRadius: 10}}                                        
+                    />
+                    <Button
+                        containerStyle={{width: 200}}
+                        title="Excluir"
+                        buttonStyle={{backgroundColor: "orange", borderRadius: 10}}                                        
                     />
                 </View>
             </View>             
