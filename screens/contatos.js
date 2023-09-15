@@ -18,12 +18,12 @@ function Contatos({navigation}) {
         },
         {
           name: 'João Carlos',
-          avatar_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkaeepVoKMwwUUV0fSr7nyXeIZX9GFDkWq7A&usqp=CAU',
+          avatar_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjLE9Ylr4f4BXaJfXkLC0YGydJDZVQoxK0Dg&usqp=CAU',
           subtitle: '81 99999999'
         },
         {
           name: 'Pedro Augusto',
-          avatar_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkaeepVoKMwwUUV0fSr7nyXeIZX9GFDkWq7A&usqp=CAU',
+          avatar_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjLE9Ylr4f4BXaJfXkLC0YGydJDZVQoxK0Dg&usqp=CAU',
           subtitle: '81 987654321'
         },
         {
