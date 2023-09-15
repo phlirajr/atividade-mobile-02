@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as React from 'react';
 import {useState, useEffect} from 'react';
 import { View } from 'react-native';
@@ -5,11 +6,12 @@ import { Button, Header, Input } from 'react-native-elements';
 
 
 
-function EditarContato({route, navigation}) {
+function EditarContato({route, navigation}) {   
 
     const [nome, setNome] = useState();
     const [email, setEmail] = useState();
     const [fone, setFone] = useState();
+
     useEffect(()=>{
         if (route.params){
             const { nome } = route.params
@@ -19,7 +21,29 @@ function EditarContato({route, navigation}) {
             setEmail(email)
             setFone(fone)
         }
-    }, [ ])
+    }, [])
+    
+    function updatePost() {
+        axios
+          .put(`http://localhost:3000/contatos/${route.params.id}`, {
+           id: route.params.id,
+           nome:nome,
+           avatar_url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjLE9Ylr4f4BXaJfXkLC0YGydJDZVQoxK0Dg&usqp=CAU",
+           email:email,
+           telefone: fone
+          })
+          .then(() => {
+            console.log("cadastro alterado")
+          }).catch(function(error){console.log(error)}), [];
+      }
+
+    function deletePost() {
+        axios
+          .delete(`http://localhost:3000/contatos/${route.params.id}`)
+          .then(() => {
+            alert("Contato excluído");
+          });
+      }
 
     return (
         <View style={{flex: 1, flexDirection: "column", alignItems: 'center',marginTop: 10, maxWidth:'auto', padding: 10, gap: 10}}>
@@ -42,7 +66,7 @@ function EditarContato({route, navigation}) {
                     placeholder="E-mail"
                     value = {email}
                     leftIcon={{ type: 'font-awesome', name: 'lock', color: '#d3d3d3'}}
-                    onChangeText={email => setNome(email)}
+                    onChangeText={email => setEmail(email)}
                     style={{padding: 2}}
                 />
                 <Input
@@ -50,19 +74,21 @@ function EditarContato({route, navigation}) {
                     placeholder="Fone"
                     value= {fone}
                     leftIcon={{ type: 'font-awesome', name: 'phone', color: '#d3d3d3'}}
-                    onChangeText={fone => setNome(fone)}
+                    onChangeText={fone => setFone(fone)}
                     style={{padding: 2}}
                 />
                 <View style={{alignItems:'center', paddingTop:30, gap: 20}}>
                     <Button
                         containerStyle={{width: 200}}
                         title="Alterar"
-                        buttonStyle={{borderRadius: 10}}                                        
+                        buttonStyle={{borderRadius: 10}}
+                        onPress={updatePost}                                        
                     />
                     <Button
                         containerStyle={{width: 200}}
                         title="Excluir"
-                        buttonStyle={{backgroundColor: "orange", borderRadius: 10}}                                        
+                        buttonStyle={{backgroundColor: "orange", borderRadius: 10}}  
+                        onPress={deletePost}                                      
                     />
                 </View>
             </View>             
