@@ -3,6 +3,7 @@ import axios from 'axios';
 import * as React from 'react';
 import { View } from 'react-native';
 import { ListItem, Avatar, Header } from 'react-native-elements';
+import FlashMessage from 'react-native-flash-message';
 
 
 function Contatos({navigation}) {

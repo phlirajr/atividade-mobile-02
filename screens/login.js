@@ -1,11 +1,36 @@
+import axios from 'axios';
 import * as React from 'react';
+import { useState } from 'react';
 import { View } from 'react-native';
 import { Avatar, Button, Input } from 'react-native-elements';
+import FlashMessage, { showMessage } from 'react-native-flash-message';
 
 
 function Login({navigation}) {
+
+  const [email, setEmail]  = useState();
+  const [senha, setSenha]  = useState();
+
+  function checkLogin() {
+      axios
+        .get(`http://localhost:3000/usuarios?email=${email}&senha=${senha}`, {   
+        })
+        .then((response) => {
+          if(response.data.length != 0){
+            navigation.navigate("Contatos")            
+          }else{
+            showMessage({
+              message: "E-mail e/ou senha incorretos!",
+              type: "danger",
+            })
+          }
+        }).catch(function(error){console.log(error)}), [email, senha];
+    }
+
+
     return (
         <View style={{flex: 1, flexDirection: "column", justifyContent:'center', alignItems: 'center', paddingTop: 200}}>
+          <FlashMessage position="top"/>
           <View style={{alignItems: 'center'}}>
           <Avatar
             rounded
@@ -17,16 +42,18 @@ function Login({navigation}) {
           />
              <Input
                 containerStyle={{alignItems: 'center', justifyContent: 'center'}}
-                placeholder="Nome"
-                leftIcon={{ type: 'font-awesome', name: 'user', color: '#d3d3d3'}}
-                onChangeText={value => this.setState({ comment: value })}
+                placeholder="E-mail"
+                leftIcon={{ type: 'font-awesome', name: 'at', color: '#d3d3d3'}}
+                value = {email}
+                onChangeText={email => setEmail(email)}
                 style = {{marginTop: 10, padding: 2}}
               />
              <Input
                 containerStyle={{alignItems: 'center', justifyContent: 'center'}}
                 placeholder="Senha"
                 leftIcon={{ type: 'font-awesome', name: 'lock', color: '#d3d3d3'}}
-                onChangeText={value => this.setState({ comment: value })}
+                value = {senha}
+                onChangeText={senha => setSenha(senha)}
                 style={{padding: 2}}
               />
           </View>
@@ -35,7 +62,7 @@ function Login({navigation}) {
               containerStyle={{width: 200}}
               title="Login"
               buttonStyle={{borderRadius: 10}}
-              onPress={()=>navigation.navigate("Contatos")}                        
+              onPress={checkLogin}                      
             />
             <Button
               containerStyle={{width: 200 }}
