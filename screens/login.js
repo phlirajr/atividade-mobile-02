@@ -6,8 +6,7 @@ import { Avatar, Button, Icon, Input } from 'react-native-elements';
 import FlashMessage, { showMessage } from 'react-native-flash-message';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { GoogleAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";  
-
+import { GoogleAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -150,6 +149,21 @@ function Login({navigation}) {
               title="Cadastre-se"
               buttonStyle={{backgroundColor: "orange", borderRadius: 10}}              
               onPress={()=>navigation.navigate("CadastroUser")}          
+            />
+            <Button
+              containerStyle={{width: 200}}
+              icon={
+                <Icon
+                  type='font-awesome'
+                  name="photo"
+                  color="white"                  
+                  size={15}
+                />
+              }
+              leftIcon
+              title="Upload"
+              buttonStyle={{backgroundColor: "green", borderRadius: 10}}
+              onPress={()=>navigation.navigate("NovaTela")}                      
             />
           </View>
       </View>

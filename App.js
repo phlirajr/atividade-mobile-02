@@ -6,6 +6,7 @@ import Contatos from './screens/contatos';
 import CadastroContato from './screens/cadastro-contato';
 import CadastroUser from './screens/cadastro-user';
 import EditarContato from './screens/alterar-contato';
+import NovaTela from './screens/nova-tela';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +19,7 @@ return (
         <Stack.Screen name="CadastroContato" component={CadastroContato} options={{headerShown: false}} />
         <Stack.Screen name="CadastroUser" component={CadastroUser} options={{headerShown: false}} />
         <Stack.Screen name="Editar" component={EditarContato} options={{headerShown: false}} />
+        <Stack.Screen name="NovaTela" component={NovaTela} options={{headerShown: false}} />
       </Stack.Navigator>
     </NavigationContainer>
 );
